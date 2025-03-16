@@ -22,16 +22,16 @@
             <h1>Smart Expense Tracker</h1>
           </div>
           <div class="input-fields--div">
-            <input type="text" placeholder="Expense Name" />
-            <input type="number" placeholder="Amount" />
-            <select name="category" id="category">
-              <option value="category">Expense</option>
-              <option value="category">Food</option>
-              <option value="category">Clothes</option>
+            <input class="expense-name--field" type="text" placeholder="Expense Name" />
+            <input class="amount-field" type="number" placeholder="Amount" />
+            <select class="select-field" name="category" id="category">
+              <option value="Expense">Expense</option>
+              <option value="Food">Food</option>
+              <option value="Clothes">Clothes</option>
             </select>
-            <input type="datetime-local" />
+            <input class="datetime-field" type="datetime-local" />
 
-            <button>Add Expense</button>
+            <button id="add-button">Add Expense</button>
           </div>
           <!-- --------------------------------------------------------------- -->
           <template id="all-expenses">
@@ -52,5 +52,6 @@
         </div>
       </section>
     </main>
+    <script src="js/script.js"></script>
   </body>
 </html>
