@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="images/exp_track.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Smart Expense Tracker: Track Your Expenses Easily</title>
+  </head>
+  <body class="flex-box flex-column">
+    <main>
+      <section class="main-section">
+        <div class="box-container flex-box flex-column">
+          <div class="heading-text--div">
+            <h1>Smart Expense Tracker</h1>
+          </div>
+          <div class="input-fields--div">
+            <input type="text" placeholder="Expense Name" />
+            <input type="number" placeholder="Amount" />
+            <select name="category" id="category">
+              <option value="category">Expense</option>
+              <option value="category">Food</option>
+              <option value="category">Clothes</option>
+            </select>
+            <input type="datetime-local" />
+
+            <button>Add Expense</button>
+          </div>
+          <!-- --------------------------------------------------------------- -->
+          <template id="all-expenses">
+            <div class="expenses-fields--div flex-box flex-column">
+              <div class="expenses-box">
+                <div class="date-and--info">
+                  <h2>02-15-2025</h2>
+                  <p>( Household ) Car Wash - <span> 100$</span></p>
+                </div>
+                <div class="delete-button">
+                  <button>
+                    <i class="fa-solid fa-square-xmark"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
