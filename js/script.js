@@ -8,6 +8,7 @@ let datetimeField = document.querySelector(".datetime-field")
 
 let addButton = document.getElementById("add-button")
 
+let newArr = []
 
 // Class 
 
@@ -19,8 +20,18 @@ class ExpenseTracker{
         this.amount = amount
         this.select = select
         this.dateTime = dateTime
+
+        newArr.push(this.expenseName, this.amount, this.select, this.dateTime)
         
     }
+
+}
+
+class ExpenseOperation extends ExpenseTracker{
+    
+        loadExpense(){
+            console.log(newArr);
+        }
 
 }
 
