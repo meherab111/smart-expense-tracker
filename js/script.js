@@ -9,6 +9,7 @@ let datetimeField = document.querySelector(".datetime-field")
 let addButton = document.getElementById("add-button")
 
 
+// Class 
 
 class ExpenseTracker{
 
@@ -28,7 +29,7 @@ class ExpenseTracker{
 
 let expenses = new ExpenseTracker()
 
-
+// Click Event
 
 addButton.addEventListener("click", () => {
     
