@@ -21,7 +21,8 @@ body {
 }
 
 h1,
-h2,p {
+h2,
+p {
   text-transform: capitalize;
   color: var(--text-color-white);
 }
@@ -41,8 +42,8 @@ button {
 
 input,
 select {
-    border: none;
-    padding: 0 0 0 0.5rem;
+  border: none;
+  padding: 0 0 0 0.5rem;
   text-transform: capitalize;
   border-radius: 0.4rem;
   -webkit-border-radius: 0.4rem;
@@ -95,6 +96,7 @@ select {
 
 .fa-solid {
   color: var(--delete-button-color);
+  border: none;
 }
 
 /** Part-1 */

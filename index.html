@@ -22,8 +22,12 @@
             <h1>Smart Expense Tracker</h1>
           </div>
           <div class="input-fields--div">
-            <input class="expense-name--field" type="text" placeholder="Expense Name" />
-            <input class="amount-field" type="number" placeholder="Amount" />
+            <input
+              class="expense-name--field"
+              type="text"
+              placeholder="Expense Name"
+            />
+            <input class="amount-field" type="number" placeholder="Amount($)" />
             <select class="select-field" name="category" id="category">
               <option value="Expense">Expense</option>
               <option value="Food">Food</option>
@@ -34,15 +38,20 @@
             <button id="add-button">Add Expense</button>
           </div>
           <!-- --------------------------------------------------------------- -->
-          <template id="all-expenses">
-            <div class="expenses-fields--div flex-box flex-column">
-              <div class="expenses-box">
-                <div class="date-and--info">
-                  <h2>02-15-2025</h2>
-                  <p>( Household ) Car Wash - <span> 100$</span></p>
+          <div class="expense-list--div">
+            <!-- Dynamic Value List (Template) -->
+          </div>
+          <template id="expense-template">
+            <div class="expenses-infos--div flex-box flex-column">
+              <div class="expenses-box flex-box">
+                <div class="date-and--info flex-box flex-column">
+                  <h2 class="datetime-tag"></h2>
+                  <p class="expense-info--tag">
+                    <span class="amount-tag"></span>
+                  </p>
                 </div>
-                <div class="delete-button">
-                  <button>
+                <div class="remove-button--div">
+                  <button id="remove-button">
                     <i class="fa-solid fa-square-xmark"></i>
                   </button>
                 </div>
