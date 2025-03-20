@@ -9,7 +9,7 @@ let datetimeField = document.querySelector(".datetime-field");
 
 let addButton = document.getElementById("add-button");
 
-let newArr = [];
+
 
 // Template
 
@@ -31,29 +31,40 @@ let removeButton = document.getElementById("remove-button");
 
 // Class
 
-class ExpenseOperation {
+class ExpenseData{
   constructor(expenseName, amount, select, dateTime) {
     this.expenseName = expenseName;
     this.amount = amount;
     this.select = select;
     this.dateTime = dateTime;
-    
+  }
+}
+
+class ExpenseOperation {
+
+  constructor(){
+
+    this.newArr = JSON.parse(localStorage.getItem("expense-data")) || []
   }
 
-  setExpense() {
-    newArr.push(this.expenseName, this.amount, this.select, this.dateTime);
+  
+  setExpense(expenseName, amount, select, dateTime) {
+    let expenseData = new ExpenseData(expenseName, amount, select, dateTime)
 
-    let convertedArr = JSON.stringify(newArr);
+    this.newArr.push(expenseData);
 
-    localStorage.setItem("expense-data", convertedArr) || [];
+    // console.log(this.newArr);
+    
+
+    let convertedArr = JSON.stringify(this.newArr);
+
+    localStorage.setItem("expense-data", convertedArr);
   }
 
   getExpense() {
-    let storageData = localStorage.getItem("expense-data");
+    let storageData = JSON.parse(localStorage.getItem("expense-data"));
 
-    let convertedData = JSON.parse(storageData);
-
-    return convertedData;
+    return storageData;
   }
 
   removeExpense() {
@@ -63,39 +74,40 @@ class ExpenseOperation {
 
 class ExpenseDisplay extends ExpenseOperation {
   displayExpense() {
-    let x = super.getExpense();
-
+    let x = super.getExpense() || [];
+    
     x.forEach((element) => {
-      console.log(element);
+      console.log(element.expenseName);
     });
   }
 }
+
+let expenseOp = new ExpenseOperation();
+
+let expenseDis = new ExpenseDisplay();
 
 // Click Event
 
 addButton.addEventListener("click", () => {
   let formattedDate = new Date(datetimeField.value);
-
+  
   let newMonth = formattedDate.getMonth() + 1;
-
+  
   let newDay = formattedDate.getDate();
-
+  
   let newTime = formattedDate.toLocaleTimeString();
-
+  
   let newYear = formattedDate.getFullYear();
-
+  
   let dateTimeFormatted = `${newMonth}-${newDay}-${newYear} | ${newTime}`;
-
-  let expenseOp = new ExpenseOperation(
+  
+  
+  expenseOp.setExpense(
     expenseNameField.value,
     amountField.value,
     selectField.value,
     dateTimeFormatted
   );
-
-  expenseOp.setExpense();
-
-  let expenseDis = new ExpenseDisplay();
-
+  
   expenseDis.displayExpense();
 });
