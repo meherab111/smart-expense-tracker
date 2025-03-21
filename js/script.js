@@ -26,7 +26,7 @@ class ExpenseOperation {
     this.newArr = JSON.parse(localStorage.getItem("expense-data")) || [];
     this.dynamicExpenseList = document.querySelector(".expense-list--div");
   }
-
+// set expense
   setExpense(expenseName, amount, select, dateTime) {
     let expenseData = new ExpenseData(expenseName, amount, select, dateTime);
     this.newArr.push(expenseData);
