@@ -22,7 +22,7 @@ body {
 
 h1,
 h2,
-p {
+p,span {
   text-transform: capitalize;
   color: var(--text-color-white);
 }
