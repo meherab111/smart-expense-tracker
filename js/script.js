@@ -37,7 +37,8 @@ class ExpenseOperation {
     return JSON.parse(localStorage.getItem("expense-data")) || [];
   }
 
-  removeExpense(id) {
+  removeExpense(event) {
+    let updatedData = 
     localStorage.removeItem("expense-data");
   }
 }
@@ -60,9 +61,9 @@ class ExpenseDisplay extends ExpenseOperation {
 
       
 
-      templateClone.getElementById("remove-button").addEventListener("click", () => {
-        super.removeExpense();
-        this.dynamicExpenseList.innerHTML = ""; 
+      templateClone.getElementById("remove-button").addEventListener("click", (event) => {
+        super.removeExpense(event);
+        this.dynamicExpenseList.remove()
       });
       this.dynamicExpenseList.append(templateClone);
     });
