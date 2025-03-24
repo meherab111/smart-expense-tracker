@@ -19,15 +19,15 @@
       <section class="main-section">
         <div class="box-container flex-box flex-column">
           <div class="heading-text--div">
-            <h1>Smart Expense Tracker</h1>
+            <p>Smart Expense Tracker</p>
           </div>
-          <div class="input-fields--div">
+          <div class="input-fields--div flex-box flex-column">
             <input
               class="expense-name--field"
               type="text"
               placeholder="Expense Name"
             />
-            <input class="amount-field" type="number" placeholder="Amount($)" />
+            <input class="amount-field" type="number" placeholder="Amount" />
             <select class="select-field" name="category" id="category">
               <option value="Expense">Expense</option>
               <option value="Food">Food</option>
@@ -40,22 +40,25 @@
           <!-- --------------------------------------------------------------- -->
           <div class="expense-list--div">
             <!-- Dynamic Expense List (Template) -->
+
           </div>
           <!-- Template -->
-          <template id="expense-template">
+          <template id="expense-template"> 
             <div class="expenses-infos--div flex-box flex-column">
               <div class="expenses-box flex-box">
                 <div class="date-and--info flex-box flex-column">
                   <p class="datetime-tag"></p>
-                  <p class="expense-info--tag">
-                  </p>
-                  <span class="amount-tag"></span>
+
+                  <div class="flex-box">
+                    <p class="select-category--tag"></p>
+                    <p class="expense-info--tag"></p>
+                    <span class="amount-tag"></span>
+                  </div>
                 </div>
-                <div class="remove-button--div">
-                  <button id="remove-button">
-                    <i class="fa-solid fa-square-xmark"></i>
-                  </button>
-                </div>
+
+                <button id="remove-button">
+                  <i class="fa-solid fa-square-xmark"></i>
+                </button>
               </div>
             </div>
           </template>

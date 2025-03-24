@@ -93,7 +93,7 @@ class ExpenseDisplay extends ExpenseOperation {
 
     expenseData.forEach((element) => {
 
-      const { expenseName, amount, dateTime } = element;
+      const { expenseName, amount, dateTime, selectCategory } = element;
       let templateClone = document.importNode(expenseTemplate.content, true);
 
       // Remove Button Functionality
@@ -105,8 +105,9 @@ class ExpenseDisplay extends ExpenseOperation {
       });
       
       templateClone.querySelector(".datetime-tag").textContent = dateTime;
+      templateClone.querySelector(".select-category--tag").textContent=`( ${selectCategory} )`
       templateClone.querySelector(".expense-info--tag").textContent = expenseName;
-      templateClone.querySelector(".amount-tag").textContent = amount;
+      templateClone.querySelector(".amount-tag").textContent = `- ${amount}/-`;
 
       this.dynamicExpenseList.append(templateClone);
 

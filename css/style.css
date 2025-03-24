@@ -17,39 +17,46 @@ html {
 
 body {
   background-color: var(--bg-color);
-  height: 100vh;
 }
 
-h1,
-h2,
 p,span {
+  font-size: 3.2rem;
   text-transform: capitalize;
   color: var(--text-color-white);
 }
 
 button {
   text-transform: capitalize;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   text-decoration: none;
-  background-color: var(--placeholder-color);
+  cursor: pointer;
+  margin: 2rem 0 0 0;
+  padding: 0.6rem;
+  background-color: var(--placeholder-color-deep);
   border: none;
   border-radius: 0.4rem;
   -webkit-border-radius: 0.4rem;
   -moz-border-radius: 0.4rem;
   -ms-border-radius: 0.4rem;
   -o-border-radius: 0.4rem;
+  transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  &:hover{
+    background-color: var(--text-color-skyblue);
+  }
 }
 
 input,
 select {
+  color: var(--text-color-white);
+  font-size: 1.6rem;
   border: none;
   padding: 0 0 0 0.5rem;
   text-transform: capitalize;
-  border-radius: 0.4rem;
-  -webkit-border-radius: 0.4rem;
-  -moz-border-radius: 0.4rem;
-  -ms-border-radius: 0.4rem;
-  -o-border-radius: 0.4rem;
+
 }
 
 /* Themes */
@@ -60,7 +67,8 @@ select {
   --text-color-white: #ffffff;
   --text-color-skyblue: #31b4ec;
   --text-color-green: #5bbd3d;
-  --placeholder-color: #ffffff80;
+  --placeholder-color-deep: #ffffff80;
+  --placeholder-color-light:#ffffff33;
   --delete-button-color: #f85757;
 }
 
@@ -68,7 +76,7 @@ select {
 
 .box-container {
   max-width: 70rem;
-  margin: 0 auto;
+  margin: 20rem auto;
   padding: 3.4rem 5.6rem;
   background-color: var(--box-color);
   border-radius: 0.6rem;
@@ -91,7 +99,29 @@ select {
 /* Reuseable */
 
 ::placeholder {
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--placeholder-color-deep);
+  transition: all 0.3s linear ;
+  -webkit-transition: all 0.3s linear ;
+  -moz-transition: all 0.3s linear ;
+  -ms-transition: all 0.3s linear ;
+  -o-transition: all 0.3s linear ;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: var(--placeholder-color-light);
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
 }
 
 .fa-solid {
@@ -101,14 +131,54 @@ select {
 
 /** Part-1 */
 
-.input-fields--div {
-  max-width: 50rem;
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  text-align: center;
-  justify-items: center;
-  gap: 1rem;
+.box-container{
+
+  & .heading-text--div{
+    padding: 0 0 3rem 0;
+
+    & p{
+      transition: all 0.3s linear;
+      -webkit-transition: all 0.3s linear;
+      -moz-transition: all 0.3s linear;
+      -ms-transition: all 0.3s linear;
+      -o-transition: all 0.3s linear;
+      &:hover{
+        color:var(--text-color-skyblue)
+      }
+    }
+  }
+
+  & .input-fields--div {
+    max-width: 50rem;
+    width: 100%;
+    margin: 0 auto;
+    gap: 3rem;
+
+    & .expense-name--field, .amount-field, .select-field, .datetime-field{
+      background-color: var(--box-color);
+      border-bottom: 0.2rem solid var(--placeholder-color-deep);
+      padding: 0 0 0.5rem 0;
+      transition: all 0.3s linear;
+      -webkit-transition: all 0.3s linear;
+      -moz-transition: all 0.3s linear;
+      -ms-transition: all 0.3s linear;
+      -o-transition: all 0.3s linear;
+      &:focus{
+        outline: none;
+        border-bottom: 0.2rem solid var(--text-color-skyblue);
+      }
+      &:hover{
+        border-bottom: 0.2rem solid var(--text-color-skyblue);
+      }
+    }
+
+    & .select-field, .datetime-field{
+      cursor: pointer;
+    }
+
+
+  }
+
 }
+
+
