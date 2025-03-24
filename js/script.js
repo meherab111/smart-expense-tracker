@@ -1,84 +1,131 @@
 // Input Fields
 let expenseNameField = document.querySelector(".expense-name--field");
+
 let amountField = document.querySelector(".amount-field");
+
 let selectField = document.querySelector(".select-field");
+
 let datetimeField = document.querySelector(".datetime-field");
+
 let addButton = document.getElementById("add-button");
+
 let removeButton = document.getElementById("remove-button");
 
 // Template
 let expenseTemplate = document.getElementById("expense-template");
 
-// Class for Expense Data
+// ExpenseData Class
 class ExpenseData {
-  constructor(expenseName, amount, select, dateTime) {
+  constructor(expenseName, amount, selectCategory, dateTime) {
+
     this.expenseName = expenseName;
     this.amount = amount;
-    this.select = select;
+    this.selectCategory = selectCategory;
     this.dateTime = dateTime;
-    this.id = Date.now()
+
   }
 }
 
-// Class for Expense Operations (localStorage and logic)
+// ExpenseOperation Class
 class ExpenseOperation {
   constructor() {
-    this.newArr = JSON.parse(localStorage.getItem("expense-data")) || [];
+
+    this.arrayObjects = JSON.parse(localStorage.getItem("expense-storage")) || [];
     this.dynamicExpenseList = document.querySelector(".expense-list--div");
-  }
-// set expense
-  setExpense(expenseName, amount, select, dateTime) {
-    let expenseData = new ExpenseData(expenseName, amount, select, dateTime);
-    this.newArr.push(expenseData);
-    localStorage.setItem("expense-data", JSON.stringify(this.newArr));
+
   }
 
+  // setExpense Method
+  setExpense(expenseName, amount, selectCategory, dateTime) {
+
+    let expenseDataObject = new ExpenseData(expenseName, amount, selectCategory, dateTime);
+    this.arrayObjects.push(expenseDataObject);
+    this.updateExpense()
+    
+  }
+
+  // getExpense Method
   getExpense() {
-    return JSON.parse(localStorage.getItem("expense-data")) || [];
+
+    return JSON.parse(localStorage.getItem("expense-storage")) || [];
+    
   }
 
-  removeExpense(event) {
-    let updatedData = 
-    localStorage.removeItem("expense-data");
+  // updateExpense Method
+  updateExpense(){
+
+    return localStorage.setItem("expense-storage", JSON.stringify(this.arrayObjects));
+
   }
+
+  // removeExpense Method
+  removeExpense(event, dateTimeFound) {
+
+    if (event && confirm("Are you sure you want to Delete❌ this expense?")) {
+
+      this.arrayObjects = JSON.parse(localStorage.getItem("expense-storage"))
+
+      this.arrayObjects = this.arrayObjects.filter((element) => {
+
+        const { dateTime } = element;
+        return dateTimeFound !== dateTime
+
+      })
+      
+      this.updateExpense()
+      
+    }
+
+  }
+
 }
 
-// Class for Displaying Expenses
+// ExpenseDisplay Class Inheritance With ExpenseOperation Class
 class ExpenseDisplay extends ExpenseOperation {
+
+  // displayExpense Method
   displayExpense() {
-    this.dynamicExpenseList.innerHTML = ""; // Clear to prevent duplication
-    let data = super.getExpense();
+    // Call of Parent Class Constructor Automatically
 
-    data.forEach((element) => {
+    this.dynamicExpenseList.innerHTML = "";
+
+    let expenseData = super.getExpense(); // Calling Parent Class Method
+
+    expenseData.forEach((element) => {
+
       const { expenseName, amount, dateTime } = element;
-
       let templateClone = document.importNode(expenseTemplate.content, true);
 
-      // Correctly target template child elements
+      // Remove Button Functionality
+      templateClone.getElementById("remove-button").addEventListener("click", (event) => {
+
+        super.removeExpense(event, dateTime); // Calling Parent Class Method
+        this.displayExpense()
+
+      });
+      
       templateClone.querySelector(".datetime-tag").textContent = dateTime;
       templateClone.querySelector(".expense-info--tag").textContent = expenseName;
       templateClone.querySelector(".amount-tag").textContent = amount;
 
-      
-
-      templateClone.getElementById("remove-button").addEventListener("click", (event) => {
-        super.removeExpense(event);
-        this.dynamicExpenseList.remove()
-      });
       this.dynamicExpenseList.append(templateClone);
+
     });
+
   }
+  
 }
 
-// Create instances
-let expenseOp = new ExpenseOperation();
-let expenseDis = new ExpenseDisplay();
+// Create Of Object
+let expenseOperationObj = new ExpenseOperation();
+let expenseDisplayObj = new ExpenseDisplay();
 
-// Load existing data on page load
-expenseDis.displayExpense();
+// Loading All The Infos
+expenseDisplayObj.displayExpense();
 
-// Add Button Event
+// Add Button Functionality
 addButton.addEventListener("click", () => {
+
   let formattedDate = new Date(datetimeField.value);
   let newMonth = formattedDate.getMonth() + 1;
   let newDay = formattedDate.getDate();
@@ -87,22 +134,22 @@ addButton.addEventListener("click", () => {
 
   let dateTimeFormatted = `${newMonth}-${newDay}-${newYear} | ${newTime}`;
 
-  expenseOp.setExpense(
+  // Sending Input values
+  expenseOperationObj.setExpense(
     expenseNameField.value,
     amountField.value,
     selectField.value,
     dateTimeFormatted
   );
 
-  // Refresh Display after adding
-  expenseDis.displayExpense();
+  expenseDisplayObj.displayExpense();
 
-  // Optional: Clear input fields after adding
+  // Clear Input Fields
   expenseNameField.value = "";
   amountField.value = "";
-  selectField.value = "";
   datetimeField.value = "";
+
 });
 
-// Remove All Button Event
+
 
