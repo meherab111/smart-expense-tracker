@@ -61,7 +61,7 @@ class ExpenseOperation {
   // removeExpense Method
   removeExpense(event, dateTimeFound) {
 
-    if (event && confirm("Are you sure you want to Delete❌ this expense?")) {
+    if (event && dateTimeFound) {
 
       this.arrayObjects = JSON.parse(localStorage.getItem("expense-storage"))
 
@@ -98,7 +98,7 @@ class ExpenseDisplay extends ExpenseOperation {
 
       // Remove Button Functionality
       templateClone.getElementById("remove-button").addEventListener("click", (event) => {
-
+        confirm("Are You Sure, You Want To Delete❌ This Expense?")
         super.removeExpense(event, dateTime); // Calling Parent Class Method
         this.displayExpense()
 
@@ -117,7 +117,7 @@ class ExpenseDisplay extends ExpenseOperation {
   
 }
 
-// Create Of Object
+// Create Of Objects
 let expenseOperationObj = new ExpenseOperation();
 let expenseDisplayObj = new ExpenseDisplay();
 
@@ -127,7 +127,36 @@ expenseDisplayObj.displayExpense();
 // Add Button Functionality
 addButton.addEventListener("click", () => {
 
-  let formattedDate = new Date(datetimeField.value);
+    let expenseName = expenseNameField.value.trim();
+    let amount = amountField.value.trim();
+    let category = selectField.value.trim();
+    let dateValue = datetimeField.value;
+  
+    if (!expenseName || !amount || !category || !dateValue) {
+      
+      alert("Please Fill Out All The Fields!✅");
+      
+      expenseNameField.value = "";
+      amountField.value = "";
+      datetimeField.value = "";
+
+      return;
+
+    }
+  
+    if (amount <= 0) {
+      
+      alert("Please Enter A Valid Amount!✅");
+
+      expenseNameField.value = "";
+      amountField.value = "";
+      datetimeField.value = "";
+
+      return;
+
+    }
+
+  let formattedDate = new Date(dateValue);
   let newMonth = formattedDate.getMonth() + 1;
   let newDay = formattedDate.getDate();
   let newTime = formattedDate.toLocaleTimeString();
@@ -137,9 +166,9 @@ addButton.addEventListener("click", () => {
 
   // Sending Input values
   expenseOperationObj.setExpense(
-    expenseNameField.value,
-    amountField.value,
-    selectField.value,
+    expenseName,
+    amount,
+    category,
     dateTimeFormatted
   );
 

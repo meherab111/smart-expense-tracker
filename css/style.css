@@ -77,14 +77,8 @@ select {
 
 .box-container {
   max-width: 70rem;
-  margin: 20rem auto;
+  margin: 0 auto;
   padding: 3.4rem 7.6rem;
-  background-color: var(--box-color);
-  border-radius: 0.6rem;
-  -webkit-border-radius: 0.6rem;
-  -moz-border-radius: 0.6rem;
-  -ms-border-radius: 0.6rem;
-  -o-border-radius: 0.6rem;
 }
 
 .flex-box {
@@ -145,7 +139,17 @@ i {
   }
 }
 
-.box-container {
+.main-section{
+& .box-container {
+  margin: 10rem auto;
+  padding: 3.4rem 5.6rem;
+  background-color: var(--box-color);
+  border-radius: 0.6rem;
+  -webkit-border-radius: 0.6rem;
+  -moz-border-radius: 0.6rem;
+  -ms-border-radius: 0.6rem;
+  -o-border-radius: 0.6rem;
+
   & .heading-text--div {
     padding: 0 0 3rem 0;
 
@@ -206,7 +210,7 @@ i {
       text-align: left;
 
       & .flex-box {
-        width: 50rem;
+        width: 40rem;
         margin: 1rem 0 0 0;
         gap: 1rem;
         text-align: left;
@@ -240,4 +244,5 @@ i {
       }
     }
   }
+}
 }
