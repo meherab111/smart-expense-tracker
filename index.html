@@ -40,31 +40,31 @@
           <!-- --------------------------------------------------------------- -->
           <div class="expense-list--div">
             <!-- Dynamic Expense List (Template) -->
+          </div>
+          <!-- Template -->
+          <template id="expense-template">
             <div class="expenses-infos--div flex-box flex-column">
               <div class="expenses-box flex-box">
                 <div class="date-and--info flex-box flex-column">
-                  <p class="datetime-tag">02/25/2025 | 01:23:34 AM</p>
+                  <p class="datetime-tag"></p>
 
                   <div class="flex-box">
-                    <p class="select-category--tag">( Food )</p>
-                    <p class="expense-info--tag">Broiler Murgi 1 kg -</p>
-                    <span class="amount-tag">300 /-</span>
+                    <p class="select-category--tag"></p>
+                    <p class="expense-info--tag"></p>
+                    <p class="amount-tag"></p>
                   </div>
                 </div>
 
-                <button id="remove-button">
-                  <i class="fa-solid fa-square-xmark"></i>
-                </button>
+                <div class="remove-button--div flex-box flex-column">
+                  <i id="remove-button" class="fa-solid fa-square-xmark"></i>
+                </div>
               </div>
+              <hr />
             </div>
-          </div>
-          <!-- Template -->
-          <template id="expense-template"> 
-
           </template>
         </div>
       </section>
     </main>
-    <!-- <script src="js/script.js"></script> -->
+    <script src="js/script.js"></script>
   </body>
 </html>
