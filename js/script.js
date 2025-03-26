@@ -38,6 +38,8 @@ class ExpenseOperation {
   // setExpense Method
   setExpense(expenseName, amount, selectCategory, dateTime) {
 
+    this.arrayObjects = JSON.parse(localStorage.getItem("expense-storage")) || [];
+
     let expenseDataObject = new ExpenseData(expenseName, amount, selectCategory, dateTime);
     this.arrayObjects.push(expenseDataObject);
     this.updateExpense()

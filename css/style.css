@@ -126,7 +126,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 i {
   color: var(--delete-button-color);
-  font-size: 3.2rem;
+  font-size: 4.2rem;
   border: none;
   transition: all 0.3s linear;
   -webkit-transition: all 0.3s linear;
@@ -139,110 +139,143 @@ i {
   }
 }
 
-.main-section{
-& .box-container {
-  margin: 10rem auto;
-  padding: 3.4rem 5.6rem;
-  background-color: var(--box-color);
-  border-radius: 0.6rem;
-  -webkit-border-radius: 0.6rem;
-  -moz-border-radius: 0.6rem;
-  -ms-border-radius: 0.6rem;
-  -o-border-radius: 0.6rem;
+.main-section {
+  & .box-container {
+    margin: 10rem auto;
+    padding: 3.4rem 5.6rem;
+    background-color: var(--box-color);
+    border-radius: 0.6rem;
+    -webkit-border-radius: 0.6rem;
+    -moz-border-radius: 0.6rem;
+    -ms-border-radius: 0.6rem;
+    -o-border-radius: 0.6rem;
 
-  & .heading-text--div {
-    padding: 0 0 3rem 0;
+    & .heading-text--div {
+      padding: 0 0 3rem 0;
 
-    & p {
-      transition: all 0.3s linear;
-      -webkit-transition: all 0.3s linear;
-      -moz-transition: all 0.3s linear;
-      -ms-transition: all 0.3s linear;
-      -o-transition: all 0.3s linear;
-      &:hover {
-        color: var(--text-color-skyblue);
-      }
-    }
-  }
-
-  /** Input Fields Part */
-
-  & .input-fields--div {
-    max-width: 50rem;
-    width: 100%;
-    margin: 0 auto;
-    gap: 3rem;
-
-    & .expense-name--field,
-    .amount-field,
-    .select-field,
-    .datetime-field {
-      background-color: var(--box-color);
-      border-bottom: 0.2rem solid var(--placeholder-color-deep);
-      padding: 0 0 0.5rem 0;
-      transition: all 0.3s linear;
-      -webkit-transition: all 0.3s linear;
-      -moz-transition: all 0.3s linear;
-      -ms-transition: all 0.3s linear;
-      -o-transition: all 0.3s linear;
-      &:focus {
-        outline: none;
-        border-bottom: 0.2rem solid var(--text-color-skyblue);
-      }
-      &:hover {
-        border-bottom: 0.2rem solid var(--text-color-skyblue);
+      & p {
+        transition: all 0.3s linear;
+        -webkit-transition: all 0.3s linear;
+        -moz-transition: all 0.3s linear;
+        -ms-transition: all 0.3s linear;
+        -o-transition: all 0.3s linear;
+        &:hover {
+          color: var(--text-color-skyblue);
+        }
       }
     }
 
-    & .select-field,
-    .datetime-field {
-      cursor: pointer;
+    /** Input Fields Part */
+
+    & .input-fields--div {
+      max-width: 50rem;
+      width: 100%;
+      margin: 0 auto;
+      gap: 3rem;
+
+      & .expense-name--field,
+      .amount-field,
+      .select-field,
+      .datetime-field {
+        background-color: var(--box-color);
+        border-bottom: 0.2rem solid var(--placeholder-color-deep);
+        padding: 0 0 0.5rem 0;
+        transition: all 0.3s linear;
+        -webkit-transition: all 0.3s linear;
+        -moz-transition: all 0.3s linear;
+        -ms-transition: all 0.3s linear;
+        -o-transition: all 0.3s linear;
+        &:focus {
+          outline: none;
+          border-bottom: 0.2rem solid var(--text-color-skyblue);
+        }
+        &:hover {
+          border-bottom: 0.2rem solid var(--text-color-skyblue);
+        }
+      }
+
+      & .select-field,
+      .datetime-field {
+        cursor: pointer;
+      }
     }
-  }
 
-  /** Expense List Part*/
+    /** Expense List Part*/
 
-  & .expense-list--div {
-    margin: 7rem 0 0 0;
+    & .expense-list--div {
+      margin: 7rem 0 0 0;
 
-    & .date-and--info.flex-box {
-      margin: 4rem 0 0 0;
-      text-align: left;
-
-      & .flex-box {
-        width: 40rem;
-        margin: 1rem 0 0 0;
+      & .date-and--info.flex-box {
+        margin: 4rem 0 0 0;
+        max-width: 70rem;
         gap: 1rem;
         text-align: left;
         justify-content: left;
+
+        & .datetime-tag,
+        .select-category--tag,
+        .amount-tag,
+        .expense-info--tag {
+          font-size: 2.2rem;
+        }
+
+        & .expense-info--tag {
+          max-width: 27rem;
+          word-wrap: break-word;
+        }
+
+        & .datetime-tag {
+          color: var(--text-color-skyblue);
+        }
+        & .amount-tag {
+          color: var(--text-color-green);
+        }
       }
 
-      & .datetime-tag,
-      .select-category--tag,
-      .amount-tag,
-      .expense-info--tag {
-        font-size: 2.2rem;
+      & .expenses-box {
+        & .remove-button--div {
+          align-items: center;
+        }
       }
-
-      & .expense-info--tag {
-        max-width: 27rem;
-        word-wrap: break-word;
-      }
-
-      & .datetime-tag {
-        color: var(--text-color-skyblue);
-      }
-      & .amount-tag {
-        color: var(--text-color-green);
-      }
-    }
-
-    & .expenses-box {
-      & .remove-button--div {
-        justify-content: flex-end;
-        padding: 0 0 0.5rem 0;
+      & .expenses-box.flex-box {
+        gap: 14rem;
       }
     }
   }
 }
+
+/** Media Query */
+
+@media (width<=700px) {
+  html {
+    font-size: 56%;
+  }
+
+  .main-section {
+    & .box-container {
+      margin: 6rem auto;
+    }
+  }
+
+  i {
+    font-size: 3.8rem;
+  }
+}
+
+@media (width<=550px) {
+  html {
+    font-size: 52%;
+  }
+  .main-section {
+    & .box-container {
+      & .expense-list--div {
+        & .expenses-box.flex-box {
+          gap: 6rem;
+        }
+      }
+    }
+  }
+  i {
+    font-size: 3.5rem;
+  }
 }

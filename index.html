@@ -30,8 +30,17 @@
             <input class="amount-field" type="number" placeholder="Amount" />
             <select class="select-field" name="category" id="category">
               <option value="Expense">Expense</option>
+              <option value="Rent">Rent</option>
+              <option value="Travel">Travel</option>
+              <option value="Education">Education</option>
               <option value="Food">Food</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Insurance">Insurance</option>
+              <option value="Tax">Tax</option>
               <option value="Clothes">Clothes</option>
+              <option value="Accessories">Accessories</option>
+              <option value="Maintenance">Maintenance</option>
+              <option value="Health">Health</option>
             </select>
             <input class="datetime-field" type="datetime-local" />
 
@@ -43,19 +52,16 @@
           </div>
           <!-- Template -->
           <template id="expense-template">
-            <div class="expenses-infos--div flex-box flex-column">
+            <div class="expenses-infos--div">
               <div class="expenses-box flex-box">
                 <div class="date-and--info flex-box flex-column">
                   <p class="datetime-tag"></p>
-
-                  <div class="flex-box">
-                    <p class="select-category--tag"></p>
-                    <p class="expense-info--tag"></p>
-                    <p class="amount-tag"></p>
-                  </div>
+                  <p class="select-category--tag"></p>
+                  <p class="expense-info--tag"></p>
+                  <p class="amount-tag"></p>
                 </div>
 
-                <div class="remove-button--div flex-box flex-column">
+                <div class="remove-button--div flex-box">
                   <i id="remove-button" class="fa-solid fa-square-xmark"></i>
                 </div>
               </div>
