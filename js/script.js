@@ -133,6 +133,18 @@ addButton.addEventListener("click", () => {
     let amount = amountField.value.trim();
     let category = selectField.value.trim();
     let dateValue = datetimeField.value;
+
+    if (amount <= 0 || isString(amount)) {
+      
+      alert("Please Enter A Valid Amount!✅");
+
+      expenseNameField.value = "";
+      amountField.value = "";
+      datetimeField.value = "";
+
+      return;
+
+    }
   
     if (!expenseName || !amount || !category || !dateValue) {
       
@@ -146,17 +158,7 @@ addButton.addEventListener("click", () => {
 
     }
   
-    if (amount <= 0) {
-      
-      alert("Please Enter A Valid Amount!✅");
 
-      expenseNameField.value = "";
-      amountField.value = "";
-      datetimeField.value = "";
-
-      return;
-
-    }
 
   let formattedDate = new Date(dateValue);
   let newMonth = formattedDate.getMonth() + 1;
