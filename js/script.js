@@ -134,25 +134,23 @@ addButton.addEventListener("click", () => {
     let category = selectField.value.trim();
     let dateValue = datetimeField.value;
 
-    if (amount <= 0 || isString(amount)) {
-      
-      alert("Please Enter A Valid Amount!✅");
+  
+    if (!expenseName || !category || !dateValue) {
 
-      expenseNameField.value = "";
-      amountField.value = "";
-      datetimeField.value = "";
+      console.log(typeof(amount));
+      
+      
+      alert("Please Fill Out All The Fields!✅");
 
       return;
 
     }
-  
-    if (!expenseName || !amount || !category || !dateValue) {
+
+    if (amount <= 0 || !amount) {
       
-      alert("Please Fill Out All The Fields!✅");
-      
-      expenseNameField.value = "";
+      alert("Please Enter A Valid Amount!✅");
+
       amountField.value = "";
-      datetimeField.value = "";
 
       return;
 
@@ -176,6 +174,7 @@ addButton.addEventListener("click", () => {
     dateTimeFormatted
   );
 
+  alert("Expense Added, Successfully! ✅")
   expenseDisplayObj.displayExpense();
 
   // Clear Input Fields
